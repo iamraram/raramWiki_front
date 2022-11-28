@@ -1,0 +1,219 @@
+:root {
+    --main-bg-color: rgb(31, 57, 96);
+    --main-gray-color: rgb(162, 166, 172);
+    --body-width: 700px;
+}
+
+.Header {
+    background-color: var(--main-bg-color);
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 22px;
+    color: white;
+    font-weight: 700;
+    width: var(--body-width);
+}
+
+.searchBox {
+    margin-top: 117px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.searchBox_child {
+    width: var(--body-width);
+}
+
+.searchText {
+    color: var(--main-bg-color);
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.searchForm {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.result > .searchForm {
+    width: 700px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--main-bg-color);
+    font-weight: 600;
+}
+
+.title > a {
+    color: white;
+}
+
+.infoText {
+    margin-top: 56px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.searchBar {
+    box-sizing: content-box;
+    outline: none;
+    border: 2px solid var(--main-bg-color);
+    color: var(--main-bg-color);
+    width: var(--body-width);
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 56px;
+    margin-top: 23px;
+    border-radius: 18px;
+}
+
+.searchImage {
+    background-image: url('/public/Group 102.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 50px;
+    height: 50px;
+    margin-left: 644px;
+    margin-top: 28px;
+    background-size: 40%;
+    position: absolute;
+    outline: none;
+    border: none;
+    background-color: white;
+}
+
+.result {
+    padding-top: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.caution {
+    margin-top: 20px;
+    width: 700px;
+    padding-left: 10px;
+    color: brown;
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--main-gray-color);
+}
+
+.bodyText {
+    font-size: 20px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Notfound_text {
+    margin-bottom: 15px;
+}
+
+.searchForm {
+    display: flex;
+    flex-direction: column;     
+}
+
+textarea:focus, textarea:active {
+    outline: none;
+}
+
+.desc {
+    box-sizing: content-box;
+    border: 2px solid var(--main-bg-color);    
+    width: var(--body-width);
+    font-size: 18px;
+    height: 400px;
+    margin-top: 23px;
+    border-radius: 18px;
+    padding: 20px;
+    resize: none;
+    line-height: 150%;
+    font-family:Arial, Helvetica, sans-serif;
+    color: var(--main-bg-color);    
+}
+
+.redCaution {
+    border: 2px solid brown;
+    color: brown;
+}
+
+.grayColor {
+    margin-top: 30px;
+    color: rgb(255, 255, 255);
+    background-color: var(--main-gray-color);    
+    width: 140px;
+    height: 54px;
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+    border-radius: 18px;
+}
+
+.blueColor {
+    background-color: var(--main-bg-color);
+    color: white;
+}
+
+.centerBackground {
+    margin-top: 20px;
+    color: var(--main-gray-color);    
+}
+
+.showBackground {
+    display: none;
+    cursor: pointer;
+}
+
+.resultText {
+    margin-top: 26px;
+    width: var(--body-width);
+    border-bottom: 1px solid var(--main-gray-color);
+    padding-bottom: 24px;
+}
+
+.descTitle {
+    color: var(--main-bg-color);    
+    font-weight: 600;
+    font-size: 28px;
+}
+
+.descPreview {
+    color: var(--main-gray-color);    
+    margin-top: 8px;
+    font-size: 18px;
+}
+
+
+.descEdit {
+    color: var(--main-gray-color);    
+    margin-top: 4px;
+    font-size: 18px;
+}
+
+.resultTextFirstChild {
+    display: flex;
+    justify-content: space-between;
+}
