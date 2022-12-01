@@ -29,14 +29,11 @@
     flex-direction: column;
 }
 
-.searchBox_child {
-    width: var(--body-width);
-}
-
 .searchText {
     color: var(--main-bg-color);
     font-size: 22px;
     font-weight: 600;
+    margin-left: 10px;
 }
 
 .searchForm {
@@ -216,4 +213,46 @@ textarea:focus, textarea:active {
 .resultTextFirstChild {
     display: flex;
     justify-content: space-between;
+}
+
+.noMargin {
+    margin-top: 20px;
+    color: var(--main-gray-color)
+}
+
+.ain_parent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ain {
+    margin-top: 100px;
+    display: flex;
+    text-align: center;
+    width: var(--body-width);
+}
+
+.file_title, .back_press {
+    margin-bottom: 30px;
+    color: var(--main-bg-color);
+    font-weight: 600;
+    font-size: 34px;
+}
+
+.back_press {
+    width: 30px;
+    background: url('/public/back_press.png') no-repeat left;
+    background-size: 50%;
+    bottom: 2px;
+    position: relative;
+    opacity: 0.2;
+    margin-right: 10px;
+}
+
+.file_edited {
+    width: var(--body-width);
+    line-height: 30px;
+    font-size: 18px;
 }

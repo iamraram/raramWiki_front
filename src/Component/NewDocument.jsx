@@ -8,28 +8,20 @@ function NewDocument() {
     const [searchBar, setSearchBar] = useState(['searchBar'])
     const [btnColor, setBtnColor] =  useState(['grayColor'])
     const [already, setAlready] = useState(['centerBackground'])
-    let submitText = []
-    
-    const makeJson = () => {
-        if (submitText.length >= 2) {
-            submitText.pop()
-            submitText.pop()
-        }
-        submitText.push(text)
-        submitText.push(desc)
-        console.log(submitText)
-    }
 
     const onTextChange = (event) => {
-        console.log(event.target.value)
         existName.forEach(element => {
             if (element === (event.target.value || event.target.value.replace(" ","")))  {
                 setShow(true)
                 setSearchBar('searchBar redCaution')
+                setBtnColor('grayColor')
             }
             else {
                 setShow(false)
                 setSearchBar('searchBar')
+                if (!event.target.value.length >= 2) {
+                    setBtnColor('grayColor blueColor')
+                }
             }
         })
         setText(event.target.value)
@@ -47,9 +39,25 @@ function NewDocument() {
         setDesc(event.target.value)
     }
 
-    return (
+    const handleSubmit = (event) => {
+        if (btnColor === 'grayColor blueColor') {
+            console.log("뀨") 
+            fetch(`http://localhost:4000/new?title=${text}&desc=${desc}`,{
+                method : "POST",
+            })
+                .then(response => response.json())
+                .then(result =>
+                    alert(result)
+                );
+        }
+        else {
+            event.preventDefault()
+        }
+    }
+
+    return ( 
         <div className="result">
-            <form method="GET" action="/upload" id="search" className="searchForm smallForm" autoComplete="off">
+            <form onSubmit={handleSubmit} id="search" className="searchForm smallForm" autoComplete="off">
                 <input type="text" className={searchBar} placeholder="문서 제목을 입력하세요" name="value" value={text} onChange={onTextChange}/>
                 { show &&
                     <div className="caution">
@@ -57,8 +65,8 @@ function NewDocument() {
                     </div> 
                 }
                 <textarea className="desc" placeholder="문서 내용을 입력하세요" value={desc} onChange={onDescChange}></textarea>
+                <button type="submit" className={btnColor}>문서 생성</button>
             </form>
-            <button className={btnColor} onClick={makeJson}>문서 만들기</button>
             <div className={already}>내용은 10자 이상이어야 합니다.</div>
         </div>
     )

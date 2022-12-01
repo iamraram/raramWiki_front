@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 function MainPage() {
+    
+    const [text, setText] = useState('')
+
+    const getDocumentsLength = async () => {
+       await fetch('http://localhost:4000/value', {
+            method: 'GET'
+        })
+            .then(response => response.json())
+            .then(result =>
+                setText(result)
+            );
+    }
+
+      window.onload = () => {
+        getDocumentsLength()
+    }
+
     return (
         <div>
             <div className="searchBox">
@@ -19,6 +36,9 @@ function MainPage() {
                         <Link to="/newDocument">
                             문서 만들기
                         </Link>
+                    </div>
+                    <div className="infoText noMargin">
+                        현재 {text}개의 문서가 있습니다.
                     </div>
                 </div>
             </div>
