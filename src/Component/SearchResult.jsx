@@ -9,6 +9,8 @@ function SearchResult() {
     const splited = decodeUri.split("+").join(" ")
     let arrayList = []
 
+    const [main, setMain] = useState([])
+
     const getDocumentsLength = async () => {
         await fetch(`http://localhost:4000/search?title=${splited}`, {
             method: 'GET'
@@ -24,26 +26,31 @@ function SearchResult() {
     const show = (list) => {
         console.log(list.length)
         console.log(list)
-
-        for (let i = 0; i < list.length; i ++) {
-            arrayList.push(
-                <Link to={`/file/${list[i].title}`}>
-                    <div className="resultText">
-                        <div className='resultTextFirstChild'>
-                            <div className='descTitle'>{list[i].title}</div>
-                            <div className='descEdit'>익명의 유저</div>
-                        </div>
-                        <div className='descPreview'>{list[i].desc}</div>
-                    </div>
-                </Link>
-            )
-            console.log(arrayList)
+        if (list.length === 0) {
+            setMain(
+            <div className="resultText bg">
+                검색 결과가 없습니다.
+                <br></br><br></br>
+                <Link to="/newDocument">문서 만들기</Link>
+            </div>
+        )
         }
+        for (let i = 0; i < list.length; i ++) {
+            let newArr = [...main]
+            newArr[i] = (
+            <Link to={`/file?title=${list[i].title}`}>
+                <div className="resultText">
+                    <div className='resultTextFirstChild'>
+                        <div className='descTitle'>{list[i].title}</div>
+                        <div className='descEdit'>익명의 유저</div>
+                    </div>
+                    <div className='descPreview'>{list[i].desc}</div>
+                </div>
+            </Link>)
+            setMain(newArr)
+        }
+        console.log(arrayList)
     }
-
-
-    // 여기 고쳐야 함
-
 
     return (
         <div className="result">
@@ -51,7 +58,7 @@ function SearchResult() {
                 <input type="text" className="searchBar" placeholder={splited} name="value"/>
                 <input type="submit" value="" className="searchImage"/>
             </form>
-            {arrayList}
+            { main }
         </div>
     )
 }

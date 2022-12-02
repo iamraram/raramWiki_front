@@ -256,3 +256,8 @@ textarea:focus, textarea:active {
     line-height: 30px;
     font-size: 18px;
 }
+
+.bg {
+    font-size: 20px;
+    color: var(--main-gray-color);
+}

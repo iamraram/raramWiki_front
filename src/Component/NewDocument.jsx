@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
+let existName = []
+
 function NewDocument() {
-    const existName = ['박희찬', '이하람']
     const [text, setText] = useState('')
     const [show, setShow] = useState(false)
     const [desc, setDesc] = useState('')
@@ -9,12 +10,34 @@ function NewDocument() {
     const [btnColor, setBtnColor] =  useState(['grayColor'])
     const [already, setAlready] = useState(['centerBackground'])
 
+    const onloads = () => {
+        fetch(`http://localhost:4000/file`, {
+            method: 'GET'
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result)
+                for (let i = 0; i < result.length; i ++) {
+                    existName.push(result[i].title)
+                }
+            })
+    }
+
+    window.onload = () => {
+        onloads()
+    }
+
     const onTextChange = (event) => {
         existName.forEach(element => {
-            if (element === (event.target.value || event.target.value.replace(" ","")))  {
+            if (element === event.target.value)  {
+                console.log(element, event.target.value)
+                console.log(show, searchBar, btnColor)
+
                 setShow(true)
                 setSearchBar('searchBar redCaution')
                 setBtnColor('grayColor')
+
+                console.log(show, searchBar, btnColor)
             }
             else {
                 setShow(false)
